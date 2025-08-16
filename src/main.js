@@ -1,23 +1,15 @@
-/**
- * main.js
- *
- * Bootstraps Vuetify and other plugins then mounts the App`
- */
-
-// Plugins
-import { registerPlugins } from '@/plugins'
-
-// Components
 import App from './App.vue'
-
-// Composables
 import { createApp } from 'vue'
-
-// Styles
-import 'unfonts.css'
+import router from './router'
+import vuetify from './plugins/vuetify'
+import './scss/style.scss';
+import { PerfectScrollbarPlugin } from 'vue3-perfect-scrollbar';
+import 'vue3-perfect-scrollbar/style.css';
 
 const app = createApp(App)
 
-registerPlugins(app)
-
-app.mount('#app')
+app
+    .use(router)
+    .use(PerfectScrollbarPlugin)
+    .use(vuetify)
+    .mount('#app')
