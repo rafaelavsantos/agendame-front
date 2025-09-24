@@ -1,26 +1,24 @@
+import { redirectAuthenticated } from './guards';
+
 export default [
     {
         path: '/login',
         component: () => import('@/layouts/blank/BlankLayout.vue'),
-        meta: {
-            requiresAuth: false
-        },
+        beforeEnter: redirectAuthenticated,
         children: [
             {
                 name: 'login',
                 path: '',
                 component: () => import('@/pages/auth/Login.vue')
             },
-            
+
         ]
 
-    }, 
+    },
     {
         path: '/cadastrar',
         component: () => import('@/layouts/blank/BlankLayout.vue'),
-        meta: {
-            requiresAuth: false
-        },
+        beforeEnter: redirectAuthenticated,
         children: [
             {
                 name: 'register',
@@ -28,6 +26,6 @@ export default [
                 component: () => import('@/pages/auth/Register.vue')
             },
         ]
-        
+
     }
 ]
